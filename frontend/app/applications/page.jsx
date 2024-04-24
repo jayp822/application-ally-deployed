@@ -42,7 +42,7 @@ export default function Applications() {
 	useEffect(() => {
 		console.log(userId);
 		axios
-			.get(`http://localhost:8000/api/job-applications/user/${userId}`)
+			.get(`https://application-ally.onrender.com/api/job-applications/user/${userId}`)
 			.then(res => {
 				console.log(res.data);
 				const reversedJobs = res.data.reverse();

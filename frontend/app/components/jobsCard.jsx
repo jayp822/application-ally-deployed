@@ -9,7 +9,7 @@ const JobsCard = (props) => {
 		const newStatus = event.target.value;
 		axios
 			.put(
-				`http://localhost:8000/api/update-job-application/${props.job_id}`,
+				`https://application-ally.onrender.com/api/update-job-application/${props.job_id}`,
 				{ status: newStatus }
 			)
 			.then(res => {
@@ -31,7 +31,7 @@ const JobsCard = (props) => {
 	const handleDelete = () => {
 		axios
 			.delete(
-				`http://localhost:8000/api/delete-job-application/${props.job_id}`
+				`https://application-ally.onrender.com/api/delete-job-application/${props.job_id}`
 			)
 			.then(res => {
 				console.log("Delete job:", props.title);

@@ -47,7 +47,7 @@ const EditJobs = (props) => {
         };
 
         axios
-            .put(`http://localhost:8000/api/update-job-application/${props.job.job_id}`, jobData)
+            .put(`https://application-ally.onrender.com/api/update-job-application/${props.job.job_id}`, jobData)
             .then(res => {
                 jobData.id = props.job.job_id;
                 props.onEditJobs(jobData);

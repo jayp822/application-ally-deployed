@@ -9,4 +9,4 @@
 
 ## Deployment Site:
 
-(https://application-ally.vercel.app/)
+(https://applicationally.vercel.app/)
