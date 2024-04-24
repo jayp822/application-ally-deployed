@@ -18,7 +18,7 @@ const AuthProvider = ({ children }) => {
 	// Function to handle sign in
 	const signIn = async (email, password) => {
 		try {
-			const response = await axios.post("http://localhost:8000/api/signin", {
+			const response = await axios.post("https://application-ally.onrender.com/api/signin", {
 				email,
 				password
 			});
