@@ -63,7 +63,7 @@ const AddJobs = (props) => {
 		};
 
 		axios
-			.post('https://application-ally.onrender.com/api/add-job-application', jobData)
+			.post('https://applicationally.azurewebsites.net/api/add-job-application', jobData)
 			.then((res) => {
 				props.onAddJobs(res.data);
 				console.log("Added New Application");

@@ -85,7 +85,7 @@ export default function Page() {
 	// const notify = () => toast("Added Job to Applications!");
 	const addJobHandler = job => {
 		axios
-			.post("https://application-ally.onrender.com/api/add-job-application", job)
+			.post("https://applicationally.azurewebsites.net/api/add-job-application", job)
 			.then(res => {
 				toast.success("Added job successfully! 😃");
 				console.log(res.data);

@@ -18,7 +18,7 @@ const AuthProvider = ({ children }) => {
 	// Function to handle sign in
 	const signIn = async (email, password) => {
 		try {
-			const response = await axios.post("https://application-ally.onrender.com/api/signin", {
+			const response = await axios.post("https://applicationally.azurewebsites.net/api/signin", {
 				email,
 				password
 			});

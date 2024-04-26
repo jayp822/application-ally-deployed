@@ -34,7 +34,7 @@ const SignUpForm = () => {
 			setIsLoading(true);
 
 			const response = await axios.post(
-				`https://application-ally.onrender.com/api/signup`,
+				`https://applicationally.azurewebsites.net/api/signup`,
 				{
 					email,
 					password
