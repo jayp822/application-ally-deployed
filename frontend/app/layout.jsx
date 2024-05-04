@@ -1,9 +1,7 @@
-/** @format */
 
 import "@/app/globals.css";
 import { montserrat } from "@/app/fonts";
 import { AuthProvider } from "./contexts/user";
-
 
 export const metadata = {
 	title: "Application Ally",
@@ -12,7 +10,6 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
 	return (
-		 
 		<AuthProvider>
 			<html lang="en">
 				<body className={`${montserrat.className} antialiased`}>
@@ -20,6 +17,5 @@ export default function RootLayout({ children }) {
 				</body>
 			</html>
 		</AuthProvider>
-		
 	);
 }

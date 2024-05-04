@@ -7,7 +7,7 @@ import SignInForm from "../components/signInForm";
 import Footer from "../components/footer";
 import { AuthContext } from "../contexts/user";
 import { useContext } from "react";
-import { useRouter } from "next/navigation";
+import RestrictedPage from "../components/restrictedPage";
 
 export default function Page() {
 	const { isLoggedIn } = useContext(AuthContext);
@@ -25,15 +25,5 @@ export default function Page() {
 			</div>
 		);
 	}
-	return (
-		<div className="bg-neutral-900 min-h-[100vh] flex flex-col items-center justify-between">
-			<Navbar />
-			<div className="my-[16rem]">
-				<h1 className="text-center text-4xl font-semibold text-white mx-[2rem]">
-					You are already signed in
-				</h1>
-			</div>
-			<Footer />
-		</div>
-	);
+	return( <RestrictedPage heading="You are already signed in" />);
 }

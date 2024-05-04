@@ -58,7 +58,7 @@ const SignUpForm = () => {
 
 	return (
 		<div className="container max-w-[400px] h-[500px] p-[40px] mx-[10px] bg-gray-300 rounded-md mb-10">
-			<form onSubmit={handleSubmit}>
+			<form onSubmit={handleSubmit} autoComplete="on">
 				<Input
 					isRequired
 					type="email"
@@ -66,6 +66,7 @@ const SignUpForm = () => {
 					id="email"
 					name="email"
 					value={email}
+					autoComplete="email"
 					onChange={e => setEmail(e.target.value)}
 					size="lg"
 					className="text-lg font-bold text-black p-2 my-1"
@@ -78,6 +79,7 @@ const SignUpForm = () => {
 					name="password"
 					label="Password"
 					value={password}
+					autoComplete="password"
 					onChange={e => setPassword(e.target.value)}
 					size="lg"
 					className="text-lg font-bold text-black p-2 my-1"
@@ -89,6 +91,7 @@ const SignUpForm = () => {
 					id="password"
 					name="password"
 					label="Confirm Password"
+					autoComplete="password"
 					value={confirmPassword}
 					onChange={e => setConfirmPassword(e.target.value)}
 					size="lg"

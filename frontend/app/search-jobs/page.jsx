@@ -10,6 +10,7 @@ import { AuthContext } from "../contexts/user";
 import Pagination from "../components/pagination";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import RestrictedPage from "../components/restrictedPage";
 import axios from "axios";
 
 export default function Page() {
@@ -25,7 +26,7 @@ export default function Page() {
 	const jobsPerPage = 4;
 	const indexOfLastJob = currentPage * jobsPerPage;
 	const indexOfFirstJob = indexOfLastJob - jobsPerPage;
-	const  currentJobs = jobs.slice(indexOfFirstJob, indexOfLastJob);
+	const currentJobs = jobs.slice(indexOfFirstJob, indexOfLastJob);
 	const totalPages = Math.ceil(jobs.length / jobsPerPage);
 
 	const fetchJobs = async () => {
@@ -122,7 +123,7 @@ export default function Page() {
 						onSubmit={handleSubmit}>
 						<div>
 							<h1 className="text-white text-center font-semibold text-2xl mr-3">
-								Title:
+								Title
 							</h1>
 							<input
 								className="rounded-lg px-4 py-2 mt-3 font-semibold"
@@ -136,7 +137,7 @@ export default function Page() {
 						</div>
 						<div className="mt-2">
 							<h1 className="text-white text-center font-semibold text-2xl mr-3">
-								Location:
+								Location
 							</h1>
 
 							<input
@@ -150,7 +151,7 @@ export default function Page() {
 							/>
 
 							<button
-								className="block bg-blue-500 hover:bg-blue-700 font-semibold text-white px-4 py-2 rounded-md max-w-[5rem] mx-auto"
+								className="block bg-blue-500 hover:bg-blue-700 font-semibold text-white px-4 py-2 rounded-md max-w-[10rem] mx-auto"
 								disabled={isButtonDisabled}>
 								Find
 							</button>
@@ -237,15 +238,5 @@ export default function Page() {
 		);
 	}
 
-	return (
-		<div className="bg-neutral-900 min-h-[100vh] flex flex-col items-center justify-between">
-			<Navbar />
-			<div className="my-[16rem]">
-				<h1 className="text-center text-4xl font-semibold text-white mx-[2rem]">
-					You Must be logged in to view this page
-				</h1>
-			</div>
-			<Footer />
-		</div>
-	);
+	return <RestrictedPage heading="You must be logged in to view this page" />;
 }

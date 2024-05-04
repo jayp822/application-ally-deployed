@@ -54,14 +54,14 @@ const JobsCard = props => {
 					{props.company}
 				</p>
 				<p className="text-white px-2 py-1 text-lg">{props.location}</p>
-				<p className="text-white px-2 py-1 text-lg pb-6">{props.salary}</p>
+				<p className="text-white px-2 py-1 text-lg pb-2">{props.salary}</p>
 				<div className="px-2 py-1">
 					<a
 						className="underline hover:text-blue-500 text-white text-lg"
 						href={props.website}
 						target="_blank"
 						rel="noopener noreferrer">
-						{props.website}
+						Job link
 					</a>
 				</div>
 			</div>

@@ -14,6 +14,7 @@ import { AuthContext } from "../contexts/user";
 import EditJobs from "../components/editJobs";
 import Pagination from "../components/pagination";
 import { ToastContainer } from "react-toastify";
+import RestrictedPage from "../components/restrictedPage";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function Applications() {
@@ -196,6 +197,7 @@ export default function Applications() {
 		return (
 			<div className="bg-neutral-900 flex flex-col min-h-[100vh]">
 				<Navbar />
+				{/* <NewNav/> */}
 
 				<ToastContainer
 					position="top-center"
@@ -362,16 +364,7 @@ export default function Applications() {
 			</div>
 		);
 	}
-
 	return (
-		<div className="bg-neutral-900 min-h-screen flex flex-col items-center ">
-			<Navbar />
-			<div className="my-auto">
-				<h1 className="text-center text-4xl font-semibold text-white">
-					You Must be logged in to view this page
-				</h1>
-			</div>
-			<Footer />
-		</div>
+		<RestrictedPage heading="You need to be signed in to access this page" />
 	);
 }
