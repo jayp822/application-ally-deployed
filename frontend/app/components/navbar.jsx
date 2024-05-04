@@ -12,14 +12,13 @@ export default function Navbar() {
 	const handleLogout = () => {
 		// Perform logout actions
 		signOut(); // Call signOut function from context
-		// Redirect to the sign-in page after logout
 		router.push("/");
 	};
 
 	if (isLoggedIn) {
 		return (
-			<div id="navbarDiv">
-				<ul className="navbar">
+			<div className=" m-0 w-full p-[8px]">
+				<ul className="mt-[10px] h-full px-[5%] flex flex-wrap justify-end items-center font-medium list-none">
 					<li className="mr-auto">
 						<Link href="/">
 							<Image
@@ -54,9 +53,9 @@ export default function Navbar() {
 					</li>
 
 					<li
-						className="transition px-2 py-2 mx-1 font-semibold text-sm bg-blue-500 text-white rounded-md shadow-sm hover:-translate-y-1 hover:scale-100 hover:bg-indigo-500 ease-in-out delay-150 duration-300"
+						className="transition px-2 py-2 mx-1 font-semibold text-sm bg-blue-500 text-white rounded-md shadow-sm hover:scale-100 hover:bg-indigo-500 ease-in-out delay-150 duration-300"
 						onClick={handleLogout}>
-						<button className="" id="signIn">
+						<button id="signIn">
 							Log out
 						</button>
 					</li>
@@ -65,8 +64,8 @@ export default function Navbar() {
 		);
 	}
 	return (
-		<div id="navbarDiv">
-			<ul className="navbar">
+		<div className=" m-0 w-full p-[8px]">
+			<ul className="mt-[10px] h-full px-[5%] flex flex-wrap justify-end items-center font-medium list-none">
 				<li className="mr-auto">
 					<Link href="/">
 						<Image
@@ -86,14 +85,18 @@ export default function Navbar() {
 					</Link>
 				</li>
 
-				<li className="transition px-2 py-2 mx-1 font-semibold text-sm bg-blue-500 text-white rounded-md shadow-sm hover:-translate-y-1 hover:scale-100 hover:bg-indigo-500 ease-in-out delay-150 duration-300">
+				<li>
 					<Link href="sign-in" className=" transition" id="signIn">
-						Sign In
+						<button className="transition px-2 py-2 mx-1 font-semibold text-sm bg-blue-500 text-white rounded-md shadow-sm hover:scale-[110%]  hover:bg-indigo-500 ease-in-out delay-150 duration-300">
+							Sign In
+						</button>
 					</Link>
 				</li>
-				<li className="transition px-2 py-2 mx-1 font-semibold text-sm bg-blue-500 text-white rounded-md shadow-sm hover:-translate-y-1 hover:scale-100 hover:bg-indigo-500 ease-in-out delay-150 duration-300">
+				<li>
 					<Link href="sign-up" className="transition" id="signIn">
-						Sign Up
+						<button className="transition px-2 py-2 mx-1 font-semibold text-sm bg-blue-500 text-white rounded-md shadow-sm hover:scale-[110%]  hover:bg-indigo-500 ease-in-out delay-150 duration-300">
+							Sign Up
+						</button>
 					</Link>
 				</li>
 			</ul>

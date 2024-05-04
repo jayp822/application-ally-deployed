@@ -2,14 +2,14 @@
 
 import React from "react";
 import axios from "axios";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
-const JobsCard = (props) => {
-	const statusChangeHandler = (event) => {
+const JobsCard = props => {
+	const statusChangeHandler = event => {
 		const newStatus = event.target.value;
 		axios
 			.put(
-				`https://applicationally.azurewebsites.net/api/update-job-application/${props.job_id}`,
+				`${process.env.NEXT_PUBLIC_BACKEND}/api/update-job-application/${props.job_id}`,
 				{ status: newStatus }
 			)
 			.then(res => {
@@ -31,7 +31,7 @@ const JobsCard = (props) => {
 	const handleDelete = () => {
 		axios
 			.delete(
-				`https://applicationally.azurewebsites.net/api/delete-job-application/${props.job_id}`
+				`${process.env.NEXT_PUBLIC_BACKEND}/api/delete-job-application/${props.job_id}`
 			)
 			.then(res => {
 				console.log("Delete job:", props.title);
@@ -45,27 +45,30 @@ const JobsCard = (props) => {
 	};
 
 	return (
-		<div className="flex flex-col flex-wrap p-3 rounded-lg my-4 text-white bg-neutral-800 w-inherit items-start ">
-			<h3 className="font-bold text-blue-500 text-2xl px-2 py-1">
-				{props.title}
-			</h3>
-			<p className="text-white px-2 py-1 text-xl font-semibold">
-				{props.company}
-			</p>
-			<p className="text-white px-2 py-1 text-lg">{props.location}</p>
-			<p className="text-white px-2 py-1 text-lg ">{props.salary}</p>
-			<a
-				className="underline hover:text-blue-500 text-white px-2 py-1 text-lg "
-				href={props.website}
-				target="_blank"
-				rel="noopener noreferrer">
-				<p className="text-center">Job Link</p>
-			</a>
-
-			<div className="">
+		<div className="flex p-5 rounded-lg mb-4 text-white bg-neutral-800 justify-between">
+			<div>
+				<h3 className="font-bold text-blue-500 text-2xl px-2 py-1">
+					{props.title}
+				</h3>
+				<p className="text-white px-2 py-1 text-xl font-semibold">
+					{props.company}
+				</p>
+				<p className="text-white px-2 py-1 text-lg">{props.location}</p>
+				<p className="text-white px-2 py-1 text-lg pb-6">{props.salary}</p>
+				<div className="px-2 py-1">
+					<a
+						className="underline hover:text-blue-500 text-white text-lg"
+						href={props.website}
+						target="_blank"
+						rel="noopener noreferrer">
+						{props.website}
+					</a>
+				</div>
+			</div>
+			<div className="flex flex-col">
 				<select
 					id={`status-${props.job_id}`}
-					className="  p-2 m-2 rounded-md text-black font-bold"
+					className="border border-gray-300 p-2 m-2 rounded-md text-black font-bold"
 					value={props.status}
 					onChange={statusChangeHandler}>
 					<option value="Applied">Applied</option>

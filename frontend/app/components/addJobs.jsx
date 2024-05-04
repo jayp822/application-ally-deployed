@@ -2,10 +2,11 @@
 
 import React, { useState, useContext } from "react";
 import axios from "axios";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
-const AddJobs = (props) => {
-	const userId = typeof window !== 'undefined' ? localStorage.getItem("userID") : null;
+const AddJobs = props => {
+	const userId =
+		typeof window !== "undefined" ? localStorage.getItem("userID") : null;
 
 	const [inputTitle, setInputTitle] = useState("");
 	const [inputCompany, setInputCompany] = useState("");
@@ -14,31 +15,31 @@ const AddJobs = (props) => {
 	const [inputWebsite, setInputWebsite] = useState("");
 	const [inputStatus, setInputStatus] = useState("Applied");
 
-	const titleChangeHandler = (event) => {
+	const titleChangeHandler = event => {
 		setInputTitle(event.target.value);
 	};
 
-	const companyChangeHandler = (event) => {
+	const companyChangeHandler = event => {
 		setInputCompany(event.target.value);
 	};
 
-	const locationChangeHandler = (event) => {
+	const locationChangeHandler = event => {
 		setInputLocation(event.target.value);
 	};
 
-	const salaryChangeHandler = (event) => {
+	const salaryChangeHandler = event => {
 		setInputSalary(event.target.value);
 	};
 
-	const websiteChangeHandler = (event) => {
+	const websiteChangeHandler = event => {
 		setInputWebsite(event.target.value);
 	};
 
-	const statusChangeHandler = (event) => {
+	const statusChangeHandler = event => {
 		setInputStatus(event.target.value);
 	};
 
-	const onSubmitHandler = async (event) => {
+	const onSubmitHandler = async event => {
 		event.preventDefault();
 
 		if (
@@ -63,14 +64,17 @@ const AddJobs = (props) => {
 		};
 
 		axios
-			.post('https://applicationally.azurewebsites.net/api/add-job-application', jobData)
-			.then((res) => {
+			.post(
+				`${process.env.NEXT_PUBLIC_BACKEND}/api/add-job-application`,
+				jobData
+			)
+			.then(res => {
 				props.onAddJobs(res.data);
 				console.log("Added New Application");
 				console.log(res.data);
 				toast.success("Added job successfully! 😃");
 			})
-			.catch((error) => {
+			.catch(error => {
 				console.error("Error adding job application:", error);
 				toast.error("Failed to add job! 😞");
 			});

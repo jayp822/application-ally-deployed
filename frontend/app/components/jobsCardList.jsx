@@ -3,7 +3,7 @@ import JobsCard from './jobsCard';
 
 const JobsCardList = (props) => {
     return (
-        <div className="flex flex-col gap-2 rounded-md p-6 sm:w-[75%] bg-slate-600 mx-4 sm:mx-auto mt-1">
+        <div className="grid gap-4 rounded-md p-6 bg-slate-600 mx-5 mt-1">
             {props.items.map((job) => (
                 <JobsCard
                     key={job._id}

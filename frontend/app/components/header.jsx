@@ -3,7 +3,6 @@
 import React from "react";
 import Home from "./home";
 import Image from "next/image";
-// import clogo from "@/app/assets/logo.png";
 import Link from "next/link";
 import { AuthContext } from "../contexts/user";
 import { useContext } from "react";
@@ -40,13 +39,13 @@ function Header() {
 				\
 				{isLoggedIn ? (
 					<Link href="/applications">
-						<button className=" mt-6 bg-blue-500 p-3 rounded-lg font-bold hover:bg-blue-950 hover:border-l-blue-100 border-2 animate-gradient text-white">
+						<button className=" mt-6 bg-blue-500 p-3 rounded-lg font-bold hover:bg-indigo-500  border-2 animate-gradient text-white">
 							DASHBOARD
 						</button>
 					</Link>
 				) : (
 					<Link href="/sign-in">
-						<button className=" mt-6 bg-blue-500 p-3 rounded-lg font-bold hover:bg-blue-950 hover:border-l-blue-100 border-2 animate-gradient text-white">
+						<button className=" mt-6 bg-blue-500 p-3 rounded-lg font-bold hover:bg-indigo-500  border-2 animate-gradient text-white">
 							GET STARTED
 						</button>
 					</Link>

@@ -17,15 +17,15 @@ const SignUpForm = () => {
 	const [isLoading, setIsLoading] = useState(false);
 	const LoadingComponent = () => {
 		return (
-			<div className="text-xl font-semibold text-center">
+			<div className="text-lg font-semibold mt-4 text-center">
 				<p>Loading...</p>
 			</div>
 		);
 	};
 	const handleSubmit = async e => {
 		e.preventDefault();
-		if (password !== confirmPassword) {
-			alert("Passwords do not match");
+		if (password !== confirmPassword || password.length < 8) {
+			alert("Passwords do not match or password is less than 8 characters");
 			return;
 		}
 
@@ -34,7 +34,7 @@ const SignUpForm = () => {
 			setIsLoading(true);
 
 			const response = await axios.post(
-				`https://applicationally.azurewebsites.net/api/signup`,
+				`${process.env.NEXT_PUBLIC_BACKEND}/api/signup`,
 				{
 					email,
 					password
@@ -50,16 +50,15 @@ const SignUpForm = () => {
 
 			// Handle error, e.g., display an error message to the user
 		} finally {
-			setIsLoading(true);
+			setIsLoading(false);
 
 			setButtonDisabled(false);
 		}
 	};
 
 	return (
-		<div className="container max-w-[400px] md:w-[400px] max-h-[400px] md:h-[400px] p-[40px] bg-gray-300 rounded-md mb-10">
+		<div className="container max-w-[400px] h-[500px] p-[40px] mx-[10px] bg-gray-300 rounded-md mb-10">
 			<form onSubmit={handleSubmit}>
-				
 				<Input
 					isRequired
 					type="email"
@@ -69,9 +68,9 @@ const SignUpForm = () => {
 					value={email}
 					onChange={e => setEmail(e.target.value)}
 					size="lg"
-					className="text-lg font-bold text-black mb-2"
+					className="text-lg font-bold text-black p-2 my-1"
 				/>
-				
+
 				<Input
 					isRequired
 					type="password"
@@ -81,9 +80,9 @@ const SignUpForm = () => {
 					value={password}
 					onChange={e => setPassword(e.target.value)}
 					size="lg"
-					className="text-lg font-bold text-black mb-2"
+					className="text-lg font-bold text-black p-2 my-1"
 				/>
-				
+
 				<Input
 					isRequired
 					type="password"
@@ -93,10 +92,10 @@ const SignUpForm = () => {
 					value={confirmPassword}
 					onChange={e => setConfirmPassword(e.target.value)}
 					size="lg"
-					className="text-lg font-bold text-black mb-2"
+					className="text-lg font-bold text-black p-2 my-1"
 				/>
 				<button
-					className="bg-blue-500 p-2 text-white rounded-lg hover:bg-blue-800 font-semibold block mx-auto"
+					className="bg-blue-500 p-2 mt-4 text-white rounded-lg hover:bg-blue-800 font-semibold block mx-auto"
 					type="submit"
 					value="register"
 					disabled={isButtonDisabled}>
@@ -113,7 +112,7 @@ const SignUpForm = () => {
 					</Link>
 				</p>
 			</div>
-			{isLoading && <CircularProgress label="Loading..." />}
+			<div>{isLoading && <LoadingComponent />}</div>
 		</div>
 	);
 };

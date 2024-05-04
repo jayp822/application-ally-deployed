@@ -38,7 +38,7 @@ function Home() {
 					position={brief.position}
 				/>
 			))}
-			<h1 className="text-white mt-20 mb-3 text-3xl font-semibold">
+			<h1 className="text-white my-20 text-3xl font-semibold">
 				How it Works
 			</h1>
 
@@ -46,14 +46,14 @@ function Home() {
 				url="https://www.youtube.com/embed/izUV4I8fUzI?si=4KkvYYQEWMt_H5LY"
 				width=""
 				id=""
-				className="mb-20 mx-[8rem] aspect-video w-[75%]"
+				className="mb-10 mx-[8rem] aspect-video w-[75%]"
 				display="block"
 				position=""
 				allow="accelerometer autoplay clipboard-write encrypted-media gyroscope picture-in-picture web-share"
 			/>
 
 			<div>
-				<h1 className=" mb-10 text-white text-3xl font-semibold">Benefits</h1>
+				<h1 className=" my-20 text-white text-3xl font-semibold">Benefits</h1>
 			</div>
 
 			<div className="flex flex-wrap justify-center gap-5 w-[100%] mb-[6rem]">

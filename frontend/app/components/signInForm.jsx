@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState, useContext } from "react";
 import { AuthContext } from "../contexts/user";
-import { Input, CircularProgress } from "@nextui-org/react";
+import { Input } from "@nextui-org/react";
 
 const SignInForm = () => {
 	const [email, setEmail] = useState("");
@@ -29,7 +29,7 @@ const SignInForm = () => {
 
 	const LoadingComponent = () => {
 		return (
-			<div className="text-xl font-semibold text-center">
+			<div className="text-lg font-semibold text-center">
 				<p>Loading...</p>
 			</div>
 		);
@@ -38,7 +38,6 @@ const SignInForm = () => {
 	return (
 		<div className="container md:w-[400px] md:h-[400px] p-[40px] bg-gray-300 rounded-md flex flex-col justify-start gap-5 mb-10">
 			<form onSubmit={handleLogin}>
-				
 				<Input
 					isRequired
 					type="email"
@@ -51,7 +50,7 @@ const SignInForm = () => {
 					className="text-lg font-bold text-black"
 				/>
 				<br />
-				
+
 				<Input
 					isRequired
 					type="password"
@@ -64,14 +63,14 @@ const SignInForm = () => {
 					className="text-lg font-bold text-black mb-2"
 				/>
 				<button
-					className="bg-blue-500 p-2 text-white rounded-lg hover:bg-blue-800 font-semibold block mx-auto"
+					className="bg-blue-500 p-2 mt-4 text-white rounded-lg hover:bg-blue-800 font-semibold block mx-auto"
 					type="submit"
 					value="Log In"
 					disabled={isButtonDisabled}>
 					Log In
 				</button>
 			</form>
-			<p className="text-lg font-medium ">
+			<p className="text-lg font-medium text-center">
 				Not a user?
 				<Link
 					className="transition text-blue-600 decoration-sky-500 hover:text-blue-900  p-[3px] text-lg font-medium"
@@ -79,9 +78,7 @@ const SignInForm = () => {
 					Sign Up here
 				</Link>
 			</p>
-			<div className="">
-				{isLoading && <CircularProgress label="Loading..." />}
-			</div>
+			<div>{isLoading && <LoadingComponent />}</div>
 		</div>
 	);
 };

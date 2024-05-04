@@ -1,7 +1,3 @@
-/** @format */
-
-/** @format */
-
 "use client";
 import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
@@ -18,10 +14,13 @@ const AuthProvider = ({ children }) => {
 	// Function to handle sign in
 	const signIn = async (email, password) => {
 		try {
-			const response = await axios.post("https://applicationally.azurewebsites.net/api/signin", {
-				email,
-				password
-			});
+			const response = await axios.post(
+				`${process.env.NEXT_PUBLIC_BACKEND}/api/signin`,
+				{
+					email,
+					password
+				}
+			);
 			const authToken = response.data.token;
 			localStorage.setItem("token", authToken); // Store the token in localStorage
 			setToken(authToken);

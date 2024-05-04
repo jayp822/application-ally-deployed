@@ -14,7 +14,6 @@ const app = express();
 const router = express.Router();
 
 app.use(bodyParser.json());
-// app.use(express.json());
 app.use("/", router);
 
 const saltRounds = 10;
