@@ -45,8 +45,8 @@ const JobsCard = props => {
 	};
 
 	return (
-		<div className="flex p-5 rounded-lg mb-4 text-white bg-neutral-800 justify-between">
-			<div>
+		<div className="flex flex-wrap p-5 gap-4 rounded-lg mb-4 text-white bg-neutral-800">
+			<div className="mr-auto">
 				<h3 className="font-bold text-blue-500 text-2xl px-2 py-1">
 					{props.title}
 				</h3>
@@ -68,7 +68,7 @@ const JobsCard = props => {
 			<div className="flex flex-col">
 				<select
 					id={`status-${props.job_id}`}
-					className="border border-gray-300 p-2 m-2 rounded-md text-black font-bold"
+					className=" p-2 m-2 rounded-md text-black font-bold"
 					value={props.status}
 					onChange={statusChangeHandler}>
 					<option value="Applied">Applied</option>

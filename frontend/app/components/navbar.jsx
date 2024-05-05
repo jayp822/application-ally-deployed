@@ -1,6 +1,7 @@
 /** @format */
 
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import {
 	Navbar,
 	NavbarBrand,
@@ -9,7 +10,6 @@ import {
 	NavbarMenu,
 	NavbarContent,
 	NavbarItem,
-	Link,
 	Button
 } from "@nextui-org/react";
 import Image from "next/image";
@@ -60,6 +60,7 @@ export default function NavBar() {
 	if (isLoggedIn) {
 		return (
 			<Navbar
+				
 				shouldHideOnScroll
 				maxWidth="full"
 				isMenuOpen={isMenuOpen}
@@ -99,27 +100,25 @@ export default function NavBar() {
 							className="transition px-2 py-2 mx-1 hover:text-blue-500 font-semibold text-white"
 							href="/"
 							// onClick={() => handleItemClick("Home")}
-							>
+						>
 							Home
 						</Link>
 					</NavbarItem>
 					<NavbarItem>
 						<Link
-														className="transition px-2 py-2 mx-1 hover:text-blue-500 font-semibold text-white"
-
+							className="transition px-2 py-2 mx-1 hover:text-blue-500 font-semibold text-white"
 							href="/applications"
 							// onClick={() => handleItemClick("Applications")}
-							>
+						>
 							Applications
 						</Link>
 					</NavbarItem>
 					<NavbarItem>
 						<Link
-														className="transition px-2 py-2 mx-1 hover:text-blue-500 font-semibold text-white"
-
+							className="transition px-2 py-2 mx-1 hover:text-blue-500 font-semibold text-white"
 							href="/search-jobs"
 							// onClick={() => handleItemClick("Search Jobs")}
-							>
+						>
 							Search Jobs
 						</Link>
 					</NavbarItem>
@@ -136,21 +135,23 @@ export default function NavBar() {
 					</Button>
 				</NavbarContent>
 
-				<NavbarMenu className="bg-current mt-8">
+				<NavbarMenu className="bg-current mt-10">
 					{menuItems.map((item, index) => (
-						<NavbarMenuItem key={index}>
-							<Link
-								className={`w-full hover:bg-blue-500 ${
-									item.title === "Logout"
-										? "text-red-500 hover:bg-white hover:text-black"
-										: "text-white"
-								} mx-auto rounded p-3 font-semibold text-lg`}
+						<Link
+								
 								href={item.ref}
 								size="lg"
 								onClick={item.handler}>
+						<NavbarMenuItem key={index} className={`w-full hover:bg-blue-500 ${
+									item.title === "Logout"
+										? "text-red-500 hover:bg-white hover:text-black"
+										: "text-white"
+								} mx-auto rounded p-3 font-semibold text-lg`}>
+							
 								{item.title}
-							</Link>
+							
 						</NavbarMenuItem>
+						</Link>
 					))}
 				</NavbarMenu>
 			</Navbar>

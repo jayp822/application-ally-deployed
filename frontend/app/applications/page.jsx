@@ -71,9 +71,6 @@ export default function Applications() {
 			setFilteredJobs(filtered);
 			setCurrentPage(1);
 			setNoJobsFound(filtered.length === 0);
-			// console.log("Filter  length: ", filtered.length);
-			// console.log("Filter job length: ", filteredJobs.length);
-			// console.log("Job length: ", jobs.length);
 		} else {
 			setFilteredJobs([]);
 			setNoJobsFound(false);
@@ -177,8 +174,6 @@ export default function Applications() {
 			} else {
 				setFilteredJobs(filtered);
 				setNoJobsFound(false);
-				// console.log("Filter length: ", filtered.length);
-				// console.log("Filter job length: ", filteredJobs.length);
 			}
 		}
 
@@ -197,7 +192,6 @@ export default function Applications() {
 		return (
 			<div className="bg-neutral-900 flex flex-col min-h-[100vh]">
 				<Navbar />
-				{/* <NewNav/> */}
 
 				<ToastContainer
 					position="top-center"
@@ -211,49 +205,64 @@ export default function Applications() {
 					pauseOnHover={false}
 					theme="colored"
 				/>
-
-				<div className="grid grid-cols-4 mx-[2rem]">
-					{/* Column 1 */}
-					<div className="mt-[7rem] ml-3 flex flex-col gap-[1rem] col-span-1 p-1">
-						<div className="border rounded-lg p-3 border-gray-600 text-white bg-slate-600">
+				<div className="flex flex-wrap sm:flex-col mx-auto items-center my-[2rem]">
+					<div className="mx-auto">
+						<p className="gradient-text text-transparent text-5xl font-bold animate-gradient m-4">
+							Applications
+						</p>
+					</div>
+					<div className="flex mx-auto gap-4">
+						<button
+							className="hover:bg-blue-800 p-3 bg-blue-500 text-white rounded-md font-semibold"
+							onClick={() => setShowModal(true)}>
+							Add Job
+						</button>
+						<button className="hover:bg-blue-800 p-3 bg-blue-500 text-white rounded-md font-semibold">
+							<Link href="search-jobs">Explore New Jobs</Link>
+						</button>
+					</div>
+				</div>
+				<div className="flex flex-col sm:flex-row">
+					<div className="basis-1/4 flex flex-col gap-4 p-4 mx-[2rem]">
+						<div className=" rounded-lg  text-white bg-slate-600 p-4">
 							<h2 className="mb-2 text-xl font-bold text-white">Statistics</h2>
 							<p className="text-lg">Total Applications: {jobs.length}</p>
 							{filteredJobs.length === 0 && noJobsFound === false ? (
-								<p className="text-lg">Current Applications: {jobs.length}</p>
+								<p className="text-lg">Current Selected: {jobs.length}</p>
 							) : (
 								<p className="text-lg">
 									Current Applications: {filteredJobs.length}
 								</p>
 							)}
 						</div>
-						<div className="border rounded-md p-3 border-gray-600 bg-slate-600">
-							<h2 className="text-xl font-bold mb-2 text-white">Search Bar</h2>
-							<div className="flex flex-col gap-[1rem]">
+						<div className="flex flex-col gap-4 rounded-md bg-slate-600 p-4">
+							<h2 className="text-xl font-bold  text-white">Search Bar</h2>
+							<div className="">
 								<input
 									id="searchBar"
-									className="border border-gray-300 rounded-md mr-1 p-2"
+									className=" rounded-md  p-2"
 									type="text"
 									placeholder="Enter here"
 									value={searchQuery}
 									onChange={searchQueryHandler}
 								/>
-								<div>
-									<button
-										className="p-2 mr-4 mb-1 bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded-md max-w-[5rem] font-semibold"
-										onClick={onClickSearchQueryHandler}>
-										Find
-									</button>
-									<button
-										className="p-2 bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded-md max-w-[5rem] font-semibold"
-										onClick={resetSearchQueryHandler}>
-										Reset
-									</button>
-								</div>
+							</div>
+							<div>
+								<button
+									className="p-2 mr-4 bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded-md max-w-[5rem] font-semibold"
+									onClick={onClickSearchQueryHandler}>
+									Find
+								</button>
+								<button
+									className="p-2 bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded-md max-w-[5rem] font-semibold"
+									onClick={resetSearchQueryHandler}>
+									Reset
+								</button>
 							</div>
 						</div>
 
-						<div className="border rounded-md p-4 border-gray-600 mb-4 bg-slate-600">
-							<h2 className="text-xl font-bold text-white">Status</h2>
+						<div className=" rounded-md p-4 mb-4 bg-slate-600">
+							<h2 className="text-xl font-bold text-white my-2 px-2">Status</h2>
 							<div className="text-white">
 								<button
 									className={`p-2 m-2 rounded-md font-semibold ${
@@ -305,27 +314,9 @@ export default function Applications() {
 					</div>
 
 					{/* Column 2 */}
-					<div className="col-span-3 border-gray-400 p-4">
-						<div className="flex justify-between items-center rounded-md p-2">
-							<div>
-								<p className="gradient-text text-transparent text-5xl font-bold animate-gradient m-4">
-									Applications
-								</p>
-							</div>
-							<div>
-								<button
-									className="hover:bg-blue-800 p-3 m-2 mb-4 bg-blue-500 text-white rounded-md font-semibold"
-									onClick={() => setShowModal(true)}>
-									Add Job
-								</button>
-								<button className="hover:bg-blue-800 p-3 m-2 mb-4 bg-blue-500 text-white rounded-md font-semibold">
-									<Link href="search-jobs">Explore New Jobs</Link>
-								</button>
-							</div>
-						</div>
-
+					<div className="basis-3/4 border-gray-400 p-4 mx-[2rem]">
 						{noJobsFound ? (
-							<p className="rounded-md p-6 bg-slate-600 mx-5 mt-1 text-center text-white text-xl">
+							<p className="rounded-lg p-6 bg-slate-600 mx-5 text-center text-white text-xl">
 								No jobs found
 							</p>
 						) : (
