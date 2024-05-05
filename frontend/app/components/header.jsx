@@ -39,13 +39,13 @@ function Header() {
 				\
 				{isLoggedIn ? (
 					<Link href="/applications">
-						<button className=" mt-6 bg-blue-500 p-3 rounded-lg font-bold hover:bg-indigo-500  border-2 animate-gradient text-white">
+						<button className="  mt-6  p-3 rounded-lg font-bold hover:bg-blue-700  border-2 animate-gradient text-white bg-blue-500 shadow-md shadow-blue-500/100 hover:shadow-blue-700/100">
 							DASHBOARD
 						</button>
 					</Link>
 				) : (
 					<Link href="/sign-in">
-						<button className=" mt-6 bg-blue-500 p-3 rounded-lg font-bold hover:bg-indigo-500  border-2 animate-gradient text-white">
+						<button className=" mt-6  p-3 rounded-lg font-bold hover:bg-blue-700  border-2 animate-gradient text-white bg-blue-500 shadow-md shadow-blue-500/100 hover:shadow-blue-700/100">
 							GET STARTED
 						</button>
 					</Link>
