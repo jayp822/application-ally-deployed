@@ -11,7 +11,7 @@ This web application originated as a final project for our Web Programming class
 
 ## Deployment
 
-The current deployment of the application can be accessed [here](https://applicationally.vercel.app/).
+The current deployment of the application can be accessed at (https://applicationally.vercel.app/).
 
 ## Technologies Used
 
@@ -21,4 +21,3 @@ The current deployment of the application can be accessed [here](https://applica
 - **Bcrypt**: A password hashing function designed to securely hash passwords for storage.
 - **Axios**: A promise-based HTTP client for making requests to the server, allowing for smooth communication between frontend and backend.
 
-Feel free to explore our project repository [here](https://github.com/jayp822/application-ally-deployed) for more details and contributions.
