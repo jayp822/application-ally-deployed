@@ -104,7 +104,7 @@ const EditJobs = props => {
 				required
 			/>
 
-			<label htmlFor="location">Location:</label>
+			<label htmlFor="location">Location</label>
 			<input
 				id="location"
 				name="location"
@@ -114,7 +114,7 @@ const EditJobs = props => {
 				value={inputLocation}
 				onChange={locationChangeHandler}
 			/>
-			<label htmlFor="salary">Salary:</label>
+			<label htmlFor="salary">Salary</label>
 			<input
 				id="salary"
 				name="salary"
@@ -141,7 +141,7 @@ const EditJobs = props => {
 
 			{/* Dropdown */}
 			<div className="pt-3 pb-0">
-				<label htmlFor="status">Status:</label>
+				<label htmlFor="status">Status</label>
 				<select
 					id="status"
 					name="status"

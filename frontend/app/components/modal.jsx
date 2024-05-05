@@ -17,9 +17,9 @@ function Modal(props) {
 			id="wrapper"
 			onClick={handleClose}
 		>
-			<div className="w-[600px] flex flex-col relative">
+			<div className="w-[390px] sm:w-[600px] flex flex-col relative">
 				<button
-					className="text-white text-2xl absolute top-0 right-0 m-4 bg-red-500 w-10 h-10 flex items-center justify-center rounded-full transition duration-300 hover:bg-red-600"
+					className="text-white text-2xl absolute top-0 right-0 m-4 bg-red-500 w-10 h-10 flex items-center justify-center rounded-lg transition duration-300 hover:bg-red-600"
 					onClick={() => props.onClose()}
 				>
 					X
