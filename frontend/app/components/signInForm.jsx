@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState, useContext } from "react";
 import { AuthContext } from "../contexts/user";
 import { Input } from "@nextui-org/react";
+import { Spinner } from "@nextui-org/react";
 
 const SignInForm = () => {
 	const [email, setEmail] = useState("");
@@ -27,13 +28,6 @@ const SignInForm = () => {
 		}
 	};
 
-	const LoadingComponent = () => {
-		return (
-			<div className="text-lg font-semibold text-center">
-				<p>Loading...</p>
-			</div>
-		);
-	};
 
 	return (
 		<div className="container md:w-[400px] md:h-[400px] p-[40px] bg-gray-300 rounded-md flex flex-col justify-start gap-5 mb-10">
@@ -80,7 +74,7 @@ const SignInForm = () => {
 					Sign Up here
 				</Link>
 			</p>
-			<div>{isLoading && <LoadingComponent />}</div>
+			<div className="flex justify-center">{isLoading && <Spinner />}</div>
 		</div>
 	);
 };

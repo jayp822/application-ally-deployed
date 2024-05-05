@@ -11,6 +11,7 @@ import Pagination from "../components/pagination";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import RestrictedPage from "../components/restrictedPage";
+import { Spinner } from "@nextui-org/react";
 import axios from "axios";
 
 export default function Page() {
@@ -62,13 +63,6 @@ export default function Page() {
 		}
 	};
 
-	const LoadingComponent = () => {
-		return (
-			<div className="text-xl text-white font-semibold text-center">
-				<p>Loading...</p>
-			</div>
-		);
-	};
 
 	const handleInputChange = e => {
 		const { name, value } = e.target;
@@ -219,8 +213,8 @@ export default function Page() {
 						))}
 					</div>
 				) : (
-					<div>
-						{isLoading && <LoadingComponent />}
+					<div className="flex justify-center mr-8">
+						{isLoading && <Spinner />}
 						<p className="text-center text-white mt-8 text-xl mb-4">
 							No results found
 						</p>

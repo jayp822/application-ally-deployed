@@ -5,7 +5,8 @@ import axios from "axios";
 import { AuthContext } from "../contexts/user";
 import Link from "next/link";
 import { Input } from "@nextui-org/react";
-import { CircularProgress } from "@nextui-org/react";
+import { Spinner } from "@nextui-org/react";
+
 
 const SignUpForm = () => {
 	const { signIn } = useContext(AuthContext);
@@ -15,13 +16,7 @@ const SignUpForm = () => {
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [isButtonDisabled, setButtonDisabled] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
-	const LoadingComponent = () => {
-		return (
-			<div className="text-lg font-semibold mt-4 text-center">
-				<p>Loading...</p>
-			</div>
-		);
-	};
+
 	const handleSubmit = async e => {
 		e.preventDefault();
 		if (password !== confirmPassword || password.length < 8) {
@@ -115,7 +110,7 @@ const SignUpForm = () => {
 					</Link>
 				</p>
 			</div>
-			<div>{isLoading && <LoadingComponent />}</div>
+			<div className="flex justify-center mt-3">{isLoading && <Spinner/>}</div>
 		</div>
 	);
 };

@@ -22,7 +22,7 @@ function Brief(props) {
 	}
 	return (
 		<div
-			className="flex items-center w-[90%] md:w-[70%] lg:w-[55%] flex justify-center mt-10"
+			className="flex items-center w-[90%] md:w-[70%] lg:w-[55%] justify-center mt-10"
 			key={props.id}>
 			<Image
 				src={props.image}
