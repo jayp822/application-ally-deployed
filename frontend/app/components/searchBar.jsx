@@ -1,6 +1,3 @@
-/** @format */
-
-// SearchBar.jsx
 import React from "react";
 
 function SearchBar({
@@ -8,7 +5,8 @@ function SearchBar({
 	searchQueryHandler,
 	onClickSearchQueryHandler,
 	resetSearchQueryHandler
-}) {
+})
+{
 	return (
 		<div className="flex flex-col gap-4 rounded-md bg-slate-600 p-4">
 			<h2 className="text-xl font-bold text-white">Search Bar</h2>

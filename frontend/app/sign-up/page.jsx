@@ -1,5 +1,3 @@
-/** @format */
-
 "use client";
 import "@/app/globals.css";
 
@@ -10,9 +8,11 @@ import { AuthContext } from "../contexts/user";
 import { useContext } from "react";
 import RestrictedPage from "../components/restrictedPage";
 
-export default function Page() {
+export default function Page()
+{
 	const { isLoggedIn } = useContext(AuthContext);
-	if (!isLoggedIn) {
+	if (!isLoggedIn)
+	{
 		return (
 			<div className="flex flex-col min-h-screen bg-neutral-900">
 				<Navbar />
@@ -27,6 +27,6 @@ export default function Page() {
 		);
 	}
 	return (
-		<RestrictedPage heading="You are already signed in"/>
+		<RestrictedPage heading="You are already signed in" />
 	);
 }

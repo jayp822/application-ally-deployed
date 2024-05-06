@@ -8,7 +8,8 @@ export const metadata = {
 	description: "Your personalized job and internship applications tracker"
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children })
+{
 	return (
 		<AuthProvider>
 			<html lang="en">

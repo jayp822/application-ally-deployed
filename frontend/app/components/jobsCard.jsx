@@ -1,44 +1,50 @@
-/** @format */
-
 import React from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const JobsCard = props => {
-	const statusChangeHandler = event => {
+const JobsCard = props =>
+{
+	const statusChangeHandler = event =>
+	{
 		const newStatus = event.target.value;
 		axios
 			.put(
 				`${process.env.NEXT_PUBLIC_BACKEND}/api/update-job-application/${props.job_id}`,
 				{ status: newStatus }
 			)
-			.then(res => {
+			.then(res =>
+			{
 				console.log("Status updated:", newStatus);
 				props.onStatusChange(props.job_id, newStatus);
 				toast.success("Status updated successfully!");
 			})
-			.catch(err => {
+			.catch(err =>
+			{
 				console.error("Error updating job status:", err);
 				toast.error("Failed to update job status. Please try again later!");
 			});
 	};
 
-	const handleEdit = () => {
+	const handleEdit = () =>
+	{
 		props.onIsEditJobs(props);
 		console.log("Edit job:");
 	};
 
-	const handleDelete = () => {
+	const handleDelete = () =>
+	{
 		axios
 			.delete(
 				`${process.env.NEXT_PUBLIC_BACKEND}/api/delete-job-application/${props.job_id}`
 			)
-			.then(res => {
+			.then(res =>
+			{
 				console.log("Delete job:", props.title);
 				props.onDeleteJobs(props.job_id);
 				toast.success("Deleted job successfully!");
 			})
-			.catch(err => {
+			.catch(err =>
+			{
 				console.error("Error deleting job:", err);
 				toast.error("Failed to delete job. Please try again later!");
 			});

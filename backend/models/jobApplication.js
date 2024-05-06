@@ -1,5 +1,3 @@
-/** @format */
-
 const mongoose = require("mongoose");
 
 const jobApplicationSchema = new mongoose.Schema({

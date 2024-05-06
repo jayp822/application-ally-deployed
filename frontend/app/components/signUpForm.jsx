@@ -1,5 +1,3 @@
-/** @format */
-
 import React, { useState, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../contexts/user";
@@ -8,7 +6,8 @@ import { Input } from "@nextui-org/react";
 import { Spinner } from "@nextui-org/react";
 
 
-const SignUpForm = () => {
+const SignUpForm = () =>
+{
 	const { signIn } = useContext(AuthContext);
 
 	const [email, setEmail] = useState("");
@@ -17,14 +16,17 @@ const SignUpForm = () => {
 	const [isButtonDisabled, setButtonDisabled] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
 
-	const handleSubmit = async e => {
+	const handleSubmit = async e =>
+	{
 		e.preventDefault();
-		if (password !== confirmPassword || password.length < 8) {
+		if (password !== confirmPassword || password.length < 8)
+		{
 			alert("Passwords do not match or password is less than 8 characters");
 			return;
 		}
 
-		try {
+		try
+		{
 			setButtonDisabled(true);
 			setIsLoading(true);
 
@@ -37,14 +39,17 @@ const SignUpForm = () => {
 			);
 
 			// If sign up successful, automatically sign in the user
-			if (response.status === 201) {
+			if (response.status === 201)
+			{
 				await signIn(email, password);
 			}
-		} catch (error) {
+		} catch (error)
+		{
 			console.error("Error signing up:", error);
 
 			// Handle error, e.g., display an error message to the user
-		} finally {
+		} finally
+		{
 			setIsLoading(false);
 
 			setButtonDisabled(false);
@@ -110,7 +115,7 @@ const SignUpForm = () => {
 					</Link>
 				</p>
 			</div>
-			<div className="flex justify-center mt-3">{isLoading && <Spinner/>}</div>
+			<div className="flex justify-center mt-3">{isLoading && <Spinner />}</div>
 		</div>
 	);
 };

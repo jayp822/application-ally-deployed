@@ -1,5 +1,3 @@
-/** @format */
-
 "use client";
 import "@/app/globals.css";
 import Navbar from "@/app/components/navbar";
@@ -14,7 +12,8 @@ import RestrictedPage from "../components/restrictedPage";
 import { Spinner } from "@nextui-org/react";
 import axios from "axios";
 
-export default function Page() {
+export default function Page()
+{
 	const [currentPage, setCurrentPage] = useState(1);
 	const [isButtonDisabled, setButtonDisabled] = useState(false);
 	const { isLoggedIn } = useContext(AuthContext);
@@ -30,11 +29,13 @@ export default function Page() {
 	const currentJobs = jobs.slice(indexOfFirstJob, indexOfLastJob);
 	const totalPages = Math.ceil(jobs.length / jobsPerPage);
 
-	const fetchJobs = async () => {
+	const fetchJobs = async () =>
+	{
 		const { name, location } = searchParams;
 		const url = `https://${process.env.NEXT_PUBLIC_RAPID_HOST}/job-salary?job_title=${name}&location=${location}&radius=200`;
 
-		try {
+		try
+		{
 			setIsLoading(true);
 			setButtonDisabled(true);
 			const response = await fetch(url, {
@@ -45,7 +46,8 @@ export default function Page() {
 				}
 			});
 
-			if (!response.ok) {
+			if (!response.ok)
+			{
 				throw new Error(
 					`Failed to fetch data: ${response.status} ${response.statusText}`
 				);
@@ -55,43 +57,52 @@ export default function Page() {
 			console.log("Fetched data:", data);
 			setJobs(data.data);
 			setCurrentPage(1);
-		} catch (error) {
+		} catch (error)
+		{
 			console.error("Error fetching data:", error);
-		} finally {
+		} finally
+		{
 			setIsLoading(false);
 			setButtonDisabled(false);
 		}
 	};
 
 
-	const handleInputChange = e => {
+	const handleInputChange = e =>
+	{
 		const { name, value } = e.target;
 		setSearchParams({ ...searchParams, [name]: value });
 	};
 
-	const handleSubmit = e => {
+	const handleSubmit = e =>
+	{
 		e.preventDefault();
 		fetchJobs();
 	};
 
-	const changePageHandler = pageNumber => {
+	const changePageHandler = pageNumber =>
+	{
 		setCurrentPage(pageNumber);
 	};
 
-	const addJobHandler = job => {
+	const addJobHandler = job =>
+	{
 		axios
 			.post(`${process.env.NEXT_PUBLIC_BACKEND}/api/add-job-application`, job)
-			.then(res => {
+			.then(res =>
+			{
 				toast.success("Added job successfully! 😃");
 				console.log(res.data);
 			})
-			.catch(error => {
+			.catch(error =>
+			{
 				toast.error("Failed to add job!");
 				console.error("Error adding job application: 😞", error);
 			});
 	};
 
-	if (isLoggedIn) {
+	if (isLoggedIn)
+	{
 		return (
 			<div className="min-h-[100vh] bg-neutral-900 flex flex-col">
 				<Navbar />

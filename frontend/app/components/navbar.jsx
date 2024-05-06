@@ -1,27 +1,29 @@
-/** @format */
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import {
-	Navbar,
-	NavbarBrand,
-	NavbarMenuToggle,
-	NavbarMenuItem,
-	NavbarMenu,
-	NavbarContent,
-	NavbarItem,
-	Button
-} from "@nextui-org/react";
+import
+	{
+		Navbar,
+		NavbarBrand,
+		NavbarMenuToggle,
+		NavbarMenuItem,
+		NavbarMenu,
+		NavbarContent,
+		NavbarItem,
+		Button
+	} from "@nextui-org/react";
 import Image from "next/image";
 import { AuthContext } from "../contexts/user";
 import { useContext } from "react";
 import { usePathname, useRouter } from "next/navigation";
 
-export default function NavBar() {
+export default function NavBar()
+{
 	const { isLoggedIn, signOut } = useContext(AuthContext);
 	const router = useRouter();
 
-	const handleLogout = () => {
+	const handleLogout = () =>
+	{
 		signOut();
 		router.push("/");
 	};
@@ -57,10 +59,11 @@ export default function NavBar() {
 	// 	}
 	// };
 
-	if (isLoggedIn) {
+	if (isLoggedIn)
+	{
 		return (
 			<Navbar
-				
+
 				shouldHideOnScroll
 				maxWidth="full"
 				isMenuOpen={isMenuOpen}
@@ -99,7 +102,7 @@ export default function NavBar() {
 						<Link
 							className="transition px-2 py-2 mx-1 hover:text-blue-500 font-semibold text-white"
 							href="/"
-							// onClick={() => handleItemClick("Home")}
+						// onClick={() => handleItemClick("Home")}
 						>
 							Home
 						</Link>
@@ -108,7 +111,7 @@ export default function NavBar() {
 						<Link
 							className="transition px-2 py-2 mx-1 hover:text-blue-500 font-semibold text-white"
 							href="/applications"
-							// onClick={() => handleItemClick("Applications")}
+						// onClick={() => handleItemClick("Applications")}
 						>
 							Applications
 						</Link>
@@ -117,7 +120,7 @@ export default function NavBar() {
 						<Link
 							className="transition px-2 py-2 mx-1 hover:text-blue-500 font-semibold text-white"
 							href="/search-jobs"
-							// onClick={() => handleItemClick("Search Jobs")}
+						// onClick={() => handleItemClick("Search Jobs")}
 						>
 							Search Jobs
 						</Link>
@@ -138,19 +141,18 @@ export default function NavBar() {
 				<NavbarMenu className="bg-current mt-10">
 					{menuItems.map((item, index) => (
 						<Link
-								
-								href={item.ref}
-								size="lg"
-								onClick={item.handler}>
-						<NavbarMenuItem key={index} className={`w-full hover:bg-blue-500 ${
-									item.title === "Logout"
-										? "text-red-500 hover:bg-white hover:text-black"
-										: "text-white"
+
+							href={item.ref}
+							size="lg"
+							onClick={item.handler}>
+							<NavbarMenuItem key={index} className={`w-full hover:bg-blue-500 ${item.title === "Logout"
+									? "text-red-500 hover:bg-white hover:text-black"
+									: "text-white"
 								} mx-auto rounded p-3 font-semibold text-lg`}>
-							
+
 								{item.title}
-							
-						</NavbarMenuItem>
+
+							</NavbarMenuItem>
 						</Link>
 					))}
 				</NavbarMenu>

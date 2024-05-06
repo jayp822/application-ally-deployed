@@ -1,5 +1,3 @@
-/** @format */
-
 const express = require("express");
 const dotenv = require("dotenv");
 const User = require("../models/user");
@@ -21,38 +19,48 @@ const saltRounds = 10;
 // ***** START OF USER ROUTES *****
 
 // Get all users
-router.get("/users", async (req, res) => {
-	try {
+router.get("/users", async (req, res) =>
+{
+	try
+	{
 		const users = await User.find();
 		res.json(users);
-	} catch (error) {
+	} catch (error)
+	{
 		console.error("Error fetching users:", error);
 		res.status(500).json({ error: "Internal server error" });
 	}
 });
 
 // Get specific user
-router.get("/user/:id", async (req, res) => {
-	try {
+router.get("/user/:id", async (req, res) =>
+{
+	try
+	{
 		const user = await User.findById(req.params.id);
-		if (!user) {
+		if (!user)
+		{
 			return res.status(404).json({ error: "User not found" });
 		}
 		res.json(user);
-	} catch (error) {
+	} catch (error)
+	{
 		console.error("Error fetching user:", error);
 		res.status(500).json({ error: "Internal server error" });
 	}
 });
 
 // Add a new user
-router.post("/signup", async (req, res) => {
+router.post("/signup", async (req, res) =>
+{
 	const { email, password } = req.body;
-	try {
+	try
+	{
 		// Check if user already exists
 		let user = await User.findOne({ email });
 
-		if (user) {
+		if (user)
+		{
 			return res.status(400).json({ msg: "User already exists" });
 		}
 
@@ -72,26 +80,31 @@ router.post("/signup", async (req, res) => {
 		res
 			.status(201)
 			.json({ msg: "User created successfully", userId: user._id });
-	} catch (e) {
+	} catch (e)
+	{
 		console.error(e.message);
 		res.status(500).send("Server Error");
 	}
 });
 
-router.post("/signin", async (req, res) => {
+router.post("/signin", async (req, res) =>
+{
 	const { email, password } = req.body;
-	try {
+	try
+	{
 		// Find the user by email
 		const user = await User.findOne({ email });
 
-		if (!user) {
+		if (!user)
+		{
 			return res.status(400).json({ msg: "Invalid credentials" });
 		}
 
 		// Compare the provided password with the hashed password stored in the database
 		const isPasswordMatch = await bcrypt.compare(password, user.password);
 
-		if (!isPasswordMatch) {
+		if (!isPasswordMatch)
+		{
 			return res.status(400).json({ msg: "Invalid credentials" });
 		}
 
@@ -106,7 +119,8 @@ router.post("/signin", async (req, res) => {
 			payload,
 			process.env.JWT_SECRET, // Your JWT secret key
 			{ expiresIn: "1h" }, // Token expires in 1 hour
-			(err, token) => {
+			(err, token) =>
+			{
 				if (err) throw err;
 				res.json({
 					token,
@@ -115,37 +129,46 @@ router.post("/signin", async (req, res) => {
 				});
 			}
 		);
-	} catch (error) {
+	} catch (error)
+	{
 		console.error(error.message);
 		res.status(500).json({ error: "Server Error" });
 	}
 });
 
 // Update specific user
-router.put("/update-user/:id", async (req, res) => {
-	try {
+router.put("/update-user/:id", async (req, res) =>
+{
+	try
+	{
 		const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {
 			new: true
 		});
-		if (!updatedUser) {
+		if (!updatedUser)
+		{
 			return res.status(404).json({ error: "User not found" });
 		}
 		res.json(updatedUser);
-	} catch (error) {
+	} catch (error)
+	{
 		console.error("Error updating user:", error);
 		res.status(500).json({ error: "Internal server error" });
 	}
 });
 
 // Delete a specific user
-router.delete("/delete-user/:id", async (req, res) => {
-	try {
+router.delete("/delete-user/:id", async (req, res) =>
+{
+	try
+	{
 		const deletedUser = await User.findByIdAndDelete(req.params.id);
-		if (!deletedUser) {
+		if (!deletedUser)
+		{
 			return res.status(404).json({ error: "User not found" });
 		}
 		res.json({ message: "User deleted successfully" });
-	} catch (error) {
+	} catch (error)
+	{
 		console.error("Error deleting user:", error);
 		res.status(500).json({ error: "Internal server error" });
 	}
@@ -154,82 +177,103 @@ router.delete("/delete-user/:id", async (req, res) => {
 // ***** START OF JOB APPLICATION ROUTES *****
 
 // Get all job applications
-router.get("/job-applications", async (req, res) => {
-	try {
+router.get("/job-applications", async (req, res) =>
+{
+	try
+	{
 		const applications = await JobApplication.find(); // Corrected typo in variable name
 		res.json(applications);
-	} catch (error) {
+	} catch (error)
+	{
 		console.error("Error fetching applications:", error);
 		res.status(500).json({ error: "Internal server error" });
 	}
 });
 
 // Get all job applications for each user
-router.get("/job-applications/user/:userId", async (req, res) => {
-	try {
+router.get("/job-applications/user/:userId", async (req, res) =>
+{
+	try
+	{
 		const userId = req.params.userId;
 		const applications = await JobApplication.find({ userId }); // Filter applications by userId
 		res.json(applications);
-	} catch (error) {
+	} catch (error)
+	{
 		console.error("Error fetching applications:", error);
 		res.status(500).json({ error: "Internal server error" });
 	}
 });
 
 // Get specific job application
-router.get("/job-applications/:id", async (req, res) => {
-	try {
+router.get("/job-applications/:id", async (req, res) =>
+{
+	try
+	{
 		const application = await JobApplication.findById(req.params.id);
-		if (!application) {
+		if (!application)
+		{
 			return res.status(404).json({ error: "Application not found" });
 		}
 		res.json(application);
-	} catch (error) {
+	} catch (error)
+	{
 		console.error("Error fetching application:", error);
 		res.status(500).json({ error: "Internal server error" });
 	}
 });
 
 // Add a new application
-router.post("/add-job-application", async (req, res) => {
-	try {
+router.post("/add-job-application", async (req, res) =>
+{
+	try
+	{
 		const application = await JobApplication.create(req.body);
 		res.status(201).json(application);
-	} catch (error) {
+	} catch (error)
+	{
 		console.error("Error adding application:", error);
 		res.status(500).json({ error: "Internal server error" });
 	}
 });
 
 // Update specific application
-router.put("/update-job-application/:id", async (req, res) => {
-	try {
+router.put("/update-job-application/:id", async (req, res) =>
+{
+	try
+	{
 		const updatedApplication = await JobApplication.findByIdAndUpdate(
 			req.params.id,
 			req.body,
 			{ new: true }
 		);
-		if (!updatedApplication) {
+		if (!updatedApplication)
+		{
 			return res.status(404).json({ error: "Application not found" });
 		}
 		res.json(updatedApplication);
-	} catch (error) {
+	} catch (error)
+	{
 		console.error("Error updating application:", error);
 		res.status(500).json({ error: "Internal server error" });
 	}
 });
 
 // Delete a specific application
-router.delete("/delete-job-application/:id", async (req, res) => {
-	try {
+router.delete("/delete-job-application/:id", async (req, res) =>
+{
+	try
+	{
 		const deletedApplication = await JobApplication.findByIdAndDelete(
 			req.params.id
 		);
-		if (!deletedApplication) {
+		if (!deletedApplication)
+		{
 			return res.status(404).json({ error: "User not found" });
 		}
 		res.json({ message: "Application deleted successfully" });
-	} catch (error) {
+	} catch (error)
+	{
 		console.error("Error deleting application:", error);
 		res.status(500).json({ error: "Internal server error" });
 	}

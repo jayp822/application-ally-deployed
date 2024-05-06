@@ -1,10 +1,10 @@
-/** @format */
 "use client";
 import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const EditJobs = props => {
+const EditJobs = props =>
+{
 	const [inputTitle, setInputTitle] = useState(props.job.title);
 	const [inputCompany, setInputCompany] = useState(props.job.company);
 	const [inputLocation, setInputLocation] = useState(props.job.location);
@@ -12,31 +12,38 @@ const EditJobs = props => {
 	const [inputWebsite, setInputWebsite] = useState(props.job.website);
 	const [inputStatus, setInputStatus] = useState(props.job.status);
 
-	const titleChangeHandler = event => {
+	const titleChangeHandler = event =>
+	{
 		setInputTitle(event.target.value);
 	};
 
-	const companyChangeHandler = event => {
+	const companyChangeHandler = event =>
+	{
 		setInputCompany(event.target.value);
 	};
 
-	const locationChangeHandler = event => {
+	const locationChangeHandler = event =>
+	{
 		setInputLocation(event.target.value);
 	};
 
-	const salaryChangeHandler = event => {
+	const salaryChangeHandler = event =>
+	{
 		setInputSalary(event.target.value);
 	};
 
-	const websiteChangeHandler = event => {
+	const websiteChangeHandler = event =>
+	{
 		setInputWebsite(event.target.value);
 	};
 
-	const statusChangeHandler = event => {
+	const statusChangeHandler = event =>
+	{
 		setInputStatus(event.target.value);
 	};
 
-	const onSubmitHandler = async event => {
+	const onSubmitHandler = async event =>
+	{
 		event.preventDefault();
 
 		const jobData = {
@@ -53,13 +60,15 @@ const EditJobs = props => {
 				`${process.env.NEXT_PUBLIC_BACKEND}/api/update-job-application/${props.job.job_id}`,
 				jobData
 			)
-			.then(res => {
+			.then(res =>
+			{
 				jobData.id = props.job.job_id;
 				props.onEditJobs(jobData);
 				console.log("Edit job successfully:", props.title);
 				toast.success("Edited job successfully!");
 			})
-			.catch(err => {
+			.catch(err =>
+			{
 				console.error("Error editing job:", err);
 				toast.error("Failed to edit job. Please try again later!");
 			});

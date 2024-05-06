@@ -1,4 +1,3 @@
-/** @format */
 const dotenv = require("dotenv");
 const express = require("express");
 const api = require("./routes/api");
@@ -20,16 +19,20 @@ app.use("/api", api);
 mongoose.set("strictQuery", false);
 mongoose
 	.connect(MONGO_STR)
-	.then(() => {
+	.then(() =>
+	{
 		console.log("MongoDB successfully connected...");
-		app.listen(PORT, () => {
+		app.listen(PORT, () =>
+		{
 			console.log(`Server running on port http://localhost:${PORT}`);
 		});
 	})
-	.catch(err => {
+	.catch(err =>
+	{
 		console.log(`Error in DB connection ${err}`);
 	});
 
-app.get("/", (req, res) => {
+app.get("/", (req, res) =>
+{
 	res.send("Express test route succeded");
 });

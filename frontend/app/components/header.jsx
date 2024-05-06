@@ -1,5 +1,3 @@
-/** @format */
-
 import React from "react";
 import Home from "./home";
 import Image from "next/image";
@@ -7,7 +5,8 @@ import Link from "next/link";
 import { AuthContext } from "../contexts/user";
 import { useContext } from "react";
 
-function Header() {
+function Header()
+{
 	const { isLoggedIn } = useContext(AuthContext);
 	return (
 		<div>

@@ -1,10 +1,9 @@
-/** @format */
-
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-function Footer() {
+function Footer()
+{
 	return (
 		<div className="flex flex-col items-center w-full mt-auto p-8 bg-white">
 			<Link href="/">

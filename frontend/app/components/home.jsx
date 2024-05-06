@@ -1,11 +1,11 @@
-/** @format */
 import Iframe from "react-iframe";
 import React from "react";
 import Footer from "./footer";
 import Brief from "./brief";
 import Goal from "./goal";
 
-function Home() {
+function Home()
+{
 	const DUMMY_BRIEFS = [
 		{
 			id: 1,

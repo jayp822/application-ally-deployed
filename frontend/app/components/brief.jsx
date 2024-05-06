@@ -1,12 +1,12 @@
-/** @format */
-
 import React from "react";
 import Image from "next/image";
 
-function Brief(props) {
-	if (props.position == "right") {
+function Brief(props)
+{
+	if (props.position == "right")
+	{
 		return (
-			<div className="flex items-center w-[90%] md:w-[70%] lg:w-[55%] flex justify-center mt-10">
+			<div className="items-center w-[90%] md:w-[70%] lg:w-[55%] flex justify-center mt-10">
 				<div className="text-center mx-[0.5rem] sm:mx-[1rem] md:mx-[2rem] lg:mx-[3rem] xl:mx-[5rem]">
 					<span className=" text-white">{props.info}</span>
 				</div>

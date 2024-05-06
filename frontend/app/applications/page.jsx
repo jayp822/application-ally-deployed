@@ -1,5 +1,3 @@
-/** @format */
-
 "use client";
 import "@/app/globals.css";
 import { useState, useContext, useEffect } from "react";
@@ -20,7 +18,8 @@ import ApplicationsHeader from "../components/applicationsHeader";
 import SearchBar from "../components/searchBar";
 import StatusFilter from "../components/statusFilter";
 
-export default function Applications() {
+export default function Applications()
+{
 	const { isLoggedIn } = useContext(AuthContext);
 	const userId =
 		typeof window !== "undefined" ? localStorage.getItem("userID") : null;
@@ -52,44 +51,54 @@ export default function Applications() {
 			: jobs.length / jobsPerPage
 	);
 
-	useEffect(() => {
+	useEffect(() =>
+	{
 		console.log(userId);
 		axios
 			.get(
 				`${process.env.NEXT_PUBLIC_BACKEND}/api/job-applications/user/${userId}`
 			)
-			.then(res => {
+			.then(res =>
+			{
 				console.log(res.data);
 				const reversedJobs = res.data.reverse();
 				setJobs(reversedJobs);
 			})
-			.catch(err => {
+			.catch(err =>
+			{
 				console.error("Error fetching job applications data:", err);
 			});
 	}, []);
 
-	useEffect(() => {
-		if (selectedStatus) {
+	useEffect(() =>
+	{
+		if (selectedStatus)
+		{
 			const filtered = jobs.filter(job => job.status === selectedStatus);
 			setFilteredJobs(filtered);
 			setCurrentPage(1);
 			setNoJobsFound(filtered.length === 0);
-		} else {
+		} else
+		{
 			setFilteredJobs([]);
 			setNoJobsFound(false);
 		}
 	}, [selectedStatus, jobs]);
 
-	const toggleStatus = status => {
+	const toggleStatus = status =>
+	{
 		setSelectedStatus(prevStatus => (prevStatus === status ? null : status));
 	};
 
-	const changePageHandler = pageNumber => {
+	const changePageHandler = pageNumber =>
+	{
 		setCurrentPage(pageNumber);
 	};
 
-	const addJobsHandler = job => {
-		setJobs(prevJobs => {
+	const addJobsHandler = job =>
+	{
+		setJobs(prevJobs =>
+		{
 			return [job, ...prevJobs];
 		});
 
@@ -100,17 +109,22 @@ export default function Applications() {
 		console.log(job);
 	};
 
-	const isEditJobs = job => {
+	const isEditJobs = job =>
+	{
 		setEditJobs(true);
 		setEditJobsData(job);
 		console.log(job);
 		setShowModal(true);
 	};
 
-	const editJobsHandler = editedJob => {
-		setJobs(prevJobs => {
-			return prevJobs.map(job => {
-				if (job._id === editedJob.id) {
+	const editJobsHandler = editedJob =>
+	{
+		setJobs(prevJobs =>
+		{
+			return prevJobs.map(job =>
+			{
+				if (job._id === editedJob.id)
+				{
 					job.title = editedJob.title;
 					job.company = editedJob.company;
 					job.location = editedJob.location;
@@ -126,55 +140,74 @@ export default function Applications() {
 		console.log(editedJob);
 	};
 
-	const deleteJobsHandler = id => {
-		setJobs(prevJobs => {
+	const deleteJobsHandler = id =>
+	{
+		setJobs(prevJobs =>
+		{
 			return prevJobs.filter(job => job._id !== id);
 		});
 	};
 
-	const updateJobStatus = (id, newStatus) => {
-		setJobs(prevJobs => {
-			return prevJobs.map(job => {
-				if (job._id === id) {
+	const updateJobStatus = (id, newStatus) =>
+	{
+		setJobs(prevJobs =>
+		{
+			return prevJobs.map(job =>
+			{
+				if (job._id === id)
+				{
 					return { ...job, status: newStatus };
-				} else {
+				} else
+				{
 					return job;
 				}
 			});
 		});
 
-		setFilteredJobs(prevJobs => {
-			return prevJobs.map(job => {
-				if (job._id === id) {
+		setFilteredJobs(prevJobs =>
+		{
+			return prevJobs.map(job =>
+			{
+				if (job._id === id)
+				{
 					return { ...job, status: newStatus };
-				} else {
+				} else
+				{
 					return job;
 				}
 			});
 		});
 	};
 
-	const resetModalState = () => {
+	const resetModalState = () =>
+	{
 		setEditJobs(false);
 		setEditJobsData(null);
 		setShowModal(false);
 	};
 
-	const searchQueryHandler = event => {
+	const searchQueryHandler = event =>
+	{
 		setSearchQuery(event.target.value);
 	};
 
-	const onClickSearchQueryHandler = () => {
-		if (searchQuery.trim() === "") {
+	const onClickSearchQueryHandler = () =>
+	{
+		if (searchQuery.trim() === "")
+		{
 			setFilteredJobs([]);
-		} else {
-			const filtered = jobs.filter(job => {
+		} else
+		{
+			const filtered = jobs.filter(job =>
+			{
 				return job.title.toLowerCase().includes(searchQuery.toLowerCase());
 			});
-			if (filtered.length === 0) {
+			if (filtered.length === 0)
+			{
 				setFilteredJobs([]);
 				setNoJobsFound(true);
-			} else {
+			} else
+			{
 				setFilteredJobs(filtered);
 				setNoJobsFound(false);
 			}
@@ -183,7 +216,8 @@ export default function Applications() {
 		setCurrentPage(1);
 	};
 
-	const resetSearchQueryHandler = () => {
+	const resetSearchQueryHandler = () =>
+	{
 		setSearchQuery("");
 		setFilteredJobs([]);
 		setNoJobsFound(false);
@@ -191,7 +225,8 @@ export default function Applications() {
 		setCurrentPage(1);
 	};
 
-	if (isLoggedIn) {
+	if (isLoggedIn)
+	{
 		return (
 			<div className="bg-neutral-900 flex flex-col min-h-[100vh]">
 				<Navbar />

@@ -1,7 +1,7 @@
-// Statistics.jsx
 import React from "react";
 
-function Statistics({ jobs, filteredJobs, noJobsFound }) {
+function Statistics({ jobs, filteredJobs, noJobsFound })
+{
     return (
         <div className=" rounded-lg text-white bg-slate-600 p-4">
             <h2 className="mb-2 text-xl font-bold text-white">Statistics</h2>

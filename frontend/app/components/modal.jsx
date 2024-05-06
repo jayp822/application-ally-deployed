@@ -1,13 +1,15 @@
-/** @format */
 
 import React, { children } from "react";
 
-function Modal(props) {
-	if (!props.isVisible) {
+function Modal(props)
+{
+	if (!props.isVisible)
+	{
 		return null;
 	}
-	
-	const handleClose = (event) => {
+
+	const handleClose = (event) =>
+	{
 		if (event.target.id === "wrapper") props.onClose();
 	};
 

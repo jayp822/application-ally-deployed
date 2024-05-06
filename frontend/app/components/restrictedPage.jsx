@@ -1,10 +1,9 @@
-/** @format */
-
 import React from "react";
 import Navbar from "./navbar";
 import Footer from "./footer";
 
-function RestrictedPage(props) {
+function RestrictedPage(props)
+{
 	return (
 		<div className="bg-neutral-900 min-h-screen flex flex-col items-center ">
 			<Navbar />

@@ -1,28 +1,31 @@
-/** @format */
-
 import Link from "next/link";
 import { useState, useContext } from "react";
 import { AuthContext } from "../contexts/user";
 import { Input } from "@nextui-org/react";
 import { Spinner } from "@nextui-org/react";
 
-const SignInForm = () => {
+const SignInForm = () =>
+{
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [isButtonDisabled, setButtonDisabled] = useState(false);
 	const { signIn, isLoggedIn } = useContext(AuthContext);
 	const [isLoading, setIsLoading] = useState(false);
 
-	const handleLogin = async e => {
+	const handleLogin = async e =>
+	{
 		e.preventDefault();
 		setIsLoading(true);
 
-		try {
+		try
+		{
 			setButtonDisabled(true);
 			await signIn(email, password);
-		} catch (error) {
+		} catch (error)
+		{
 			console.error("Error signing in:", error);
-		} finally {
+		} finally
+		{
 			setButtonDisabled(false);
 			setIsLoading(false);
 		}

@@ -1,10 +1,8 @@
-/** @format */
-
-// ApplicationsHeader.jsx
 import React from "react";
 import Link from "next/link";
 
-function ApplicationsHeader({ setShowModal }) {
+function ApplicationsHeader({ setShowModal })
+{
 	return (
 		<div className="flex flex-wrap sm:flex-col mx-auto items-center my-[2rem]">
 			<div className="mx-auto">
