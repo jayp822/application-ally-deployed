@@ -1,5 +1,5 @@
 /** @format */
-
+"use client";
 import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -36,7 +36,7 @@ const EditJobs = props => {
 		setInputStatus(event.target.value);
 	};
 
-	const onSubmitHandler = event => {
+	const onSubmitHandler = async event => {
 		event.preventDefault();
 
 		const jobData = {
@@ -140,27 +140,28 @@ const EditJobs = props => {
 			/>
 
 			{/* Dropdown */}
-			<div className="pt-3 pb-0">
-				<label htmlFor="status">Status</label>
-				<select
-					id="status"
-					name="status"
-					className="border border-gray-300 p-2 ml-2 m-auto text-xl rounded-md text-black"
-					value={inputStatus}
-					onChange={statusChangeHandler}>
-					<option value="Applied">Applied</option>
-					<option value="Interview">Interview</option>
-					<option value="Rejected">Rejected</option>
-					<option value="Not Applied">Not Applied</option>
-					<option value="Offered">Offered</option>
-				</select>
+			<div className="pt-3 pb-0 flex justify-between items-center w-full">
+				<div>
+					<label htmlFor="status">Status</label>
+					<select
+						id="status"
+						name="status"
+						className="border border-gray-300 p-2 ml-2 text-xl rounded-md text-black"
+						value={inputStatus}
+						onChange={statusChangeHandler}>
+						<option value="Applied">Applied</option>
+						<option value="Interview">Interview</option>
+						<option value="Rejected">Rejected</option>
+						<option value="Not Applied">Not Applied</option>
+						<option value="Offered">Offered</option>
+					</select>
+				</div>
+				<button
+					className="bg-slate-700 hover:bg-green-500 text-white p-2 rounded-md text-xl"
+					type="submit">
+					Update Job
+				</button>
 			</div>
-
-			<button
-				className="bg-slate-700 hover:bg-green-500 text-xl border p-2 my-auto self-end rounded-md text-white"
-				type="submit">
-				Update Job
-			</button>
 		</form>
 	);
 };

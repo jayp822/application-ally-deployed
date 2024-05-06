@@ -9,7 +9,7 @@ module.exports = {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./node_modules/@nextui-org/theme/dist/components/(button|input|navbar|progress|spinner|ripple).js"
+    "./node_modules/@nextui-org/theme/dist/components/(button|input|modal|navbar|progress|select|spinner|ripple|listbox|divider|popover|scroll-shadow).js"
   ],
 	darkMode: "class",
 	theme: {

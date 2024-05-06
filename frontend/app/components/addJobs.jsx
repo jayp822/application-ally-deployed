@@ -1,5 +1,6 @@
 /** @format */
 
+// AddJobs.jsx
 import React, { useState, useContext } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -94,6 +95,7 @@ const AddJobs = props => {
 			<label htmlFor="title">
 				Job Title <span style={{ color: "red" }}>*</span>
 			</label>
+			{/* Input fields... */}
 			<input
 				id="title"
 				name="title"
@@ -119,7 +121,7 @@ const AddJobs = props => {
 				required
 			/>
 
-			<label htmlFor="location">Location:</label>
+			<label htmlFor="location">Location</label>
 			<input
 				id="location"
 				name="location"
@@ -129,7 +131,7 @@ const AddJobs = props => {
 				value={inputLocation}
 				onChange={locationChangeHandler}
 			/>
-			<label htmlFor="salary">Salary:</label>
+			<label htmlFor="salary">Salary</label>
 			<input
 				id="salary"
 				name="salary"
@@ -153,27 +155,31 @@ const AddJobs = props => {
 				onChange={websiteChangeHandler}
 				required
 			/>
-			{/* Dropdown */}
-			<div className="pt-3 pb-0">
-				<label htmlFor="status">Status:</label>
-				<select
-					id="status"
-					name="status"
-					className="border border-gray-300 p-2 ml-2 m-auto text-xl rounded-md text-black"
-					value={inputStatus}
-					onChange={statusChangeHandler}>
-					<option value="Applied">Applied</option>
-					<option value="Interview">Interview</option>
-					<option value="Rejected">Rejected</option>
-					<option value="Not Applied">Not Applied</option>
-					<option value="Offered">Offered</option>
-				</select>
+			{/* Dropdown and Button */}
+			<div className="pt-3 pb-0 flex justify-between items-center w-full">
+				{/* Dropdown */}
+				<div>
+					<label htmlFor="status">Status</label>
+					<select
+						id="status"
+						name="status"
+						className="border border-gray-300 p-2 ml-2 text-xl rounded-md text-black"
+						value={inputStatus}
+						onChange={statusChangeHandler}>
+						<option value="Applied">Applied</option>
+						<option value="Interview">Interview</option>
+						<option value="Rejected">Rejected</option>
+						<option value="Not Applied">Not Applied</option>
+						<option value="Offered">Offered</option>
+					</select>
+				</div>
+				{/* Button */}
+				<button
+					className="bg-slate-700 hover:bg-green-500 text-white p-2 rounded-md text-xl"
+					type="submit">
+					Add Job
+				</button>
 			</div>
-			<button
-				className="bg-slate-700 hover:bg-green-500 text-xl border p-2 my-auto self-end rounded-md text-white"
-				type="submit">
-				Add Job
-			</button>
 		</form>
 	);
 };

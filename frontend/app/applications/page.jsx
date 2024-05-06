@@ -1,11 +1,10 @@
 /** @format */
 
 "use client";
+import "@/app/globals.css";
 import { useState, useContext, useEffect } from "react";
 import axios from "axios";
-import "@/app/globals.css";
 import Navbar from "../components/navbar";
-import Link from "next/link";
 import Modal from "../components/modal";
 import JobsCardList from "../components/jobsCardList";
 import AddJobs from "../components/addJobs";
@@ -16,6 +15,10 @@ import Pagination from "../components/pagination";
 import { ToastContainer } from "react-toastify";
 import RestrictedPage from "../components/restrictedPage";
 import "react-toastify/dist/ReactToastify.css";
+import Statistics from "../components/statistics";
+import ApplicationsHeader from "../components/applicationsHeader";
+import SearchBar from "../components/searchBar";
+import StatusFilter from "../components/statusFilter";
 
 export default function Applications() {
 	const { isLoggedIn } = useContext(AuthContext);
@@ -205,115 +208,27 @@ export default function Applications() {
 					pauseOnHover={false}
 					theme="colored"
 				/>
-				<div className="flex flex-wrap sm:flex-col mx-auto items-center my-[2rem]">
-					<div className="mx-auto">
-						<p className="gradient-text text-transparent text-5xl font-bold animate-gradient m-4">
-							Applications
-						</p>
-					</div>
-					<div className="flex mx-auto gap-4">
-						<button
-							className="hover:bg-blue-800 p-3 bg-blue-500 text-white rounded-md font-semibold"
-							onClick={() => setShowModal(true)}>
-							Add Job
-						</button>
-						<button className="hover:bg-blue-800 p-3 bg-blue-500 text-white rounded-md font-semibold">
-							<Link href="search-jobs">Explore New Jobs</Link>
-						</button>
-					</div>
-				</div>
+
+				<ApplicationsHeader setShowModal={setShowModal} />
 				<div className="flex flex-col sm:flex-row">
 					<div className="basis-1/4 flex flex-col gap-4 p-4 mx-[2rem]">
-						<div className=" rounded-lg  text-white bg-slate-600 p-4">
-							<h2 className="mb-2 text-xl font-bold text-white">Statistics</h2>
-							<p className="text-lg">Total Applications: {jobs.length}</p>
-							{filteredJobs.length === 0 && noJobsFound === false ? (
-								<p className="text-lg">Current Selected: {jobs.length}</p>
-							) : (
-								<p className="text-lg">
-									Current Applications: {filteredJobs.length}
-								</p>
-							)}
-						</div>
-						<div className="flex flex-col gap-4 rounded-md bg-slate-600 p-4">
-							<h2 className="text-xl font-bold  text-white">Search Bar</h2>
-							<div className="">
-								<input
-									id="searchBar"
-									className=" rounded-md  p-2"
-									type="text"
-									placeholder="Enter here"
-									value={searchQuery}
-									onChange={searchQueryHandler}
-								/>
-							</div>
-							<div>
-								<button
-									className="p-2 mr-4 bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded-md max-w-[5rem] font-semibold"
-									onClick={onClickSearchQueryHandler}>
-									Find
-								</button>
-								<button
-									className="p-2 bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded-md max-w-[5rem] font-semibold"
-									onClick={resetSearchQueryHandler}>
-									Reset
-								</button>
-							</div>
-						</div>
-
-						<div className=" rounded-md p-4 mb-4 bg-slate-600">
-							<h2 className="text-xl font-bold text-white my-2 px-2">Status</h2>
-							<div className="text-white">
-								<button
-									className={`p-2 m-2 rounded-md font-semibold ${
-										selectedStatus === "Applied"
-											? "bg-green-700 "
-											: "bg-green-500 hover:bg-green-700"
-									}`}
-									onClick={() => toggleStatus("Applied")}>
-									Applied
-								</button>
-								<button
-									className={`p-2 m-2 rounded-md font-semibold ${
-										selectedStatus === "Interview"
-											? "bg-yellow-700"
-											: "bg-yellow-500 hover:bg-yellow-700"
-									}`}
-									onClick={() => toggleStatus("Interview")}>
-									Interview
-								</button>
-								<button
-									className={`p-2 m-2 rounded-md font-semibold ${
-										selectedStatus === "Rejected"
-											? "bg-red-700"
-											: "bg-red-500 hover:bg-red-700"
-									}`}
-									onClick={() => toggleStatus("Rejected")}>
-									Rejected
-								</button>
-								<button
-									className={`p-2 m-2 rounded-md font-semibold ${
-										selectedStatus === "Not Applied"
-											? "bg-neutral-700"
-											: "bg-neutral-500 hover:bg-neutral-700"
-									}`}
-									onClick={() => toggleStatus("Not Applied")}>
-									Not Applied
-								</button>
-								<button
-									className={`p-2 m-2 rounded-md font-semibold ${
-										selectedStatus === "Offered"
-											? "bg-sky-700"
-											: "bg-sky-500 hover:bg-sky-700"
-									}`}
-									onClick={() => toggleStatus("Offered")}>
-									Offered
-								</button>
-							</div>
-						</div>
+						<Statistics
+							jobs={jobs}
+							filteredJobs={filteredJobs}
+							noJobsFound={noJobsFound}
+						/>
+						<SearchBar
+							searchQuery={searchQuery}
+							searchQueryHandler={searchQueryHandler}
+							onClickSearchQueryHandler={onClickSearchQueryHandler}
+							resetSearchQueryHandler={resetSearchQueryHandler}
+						/>
+						<StatusFilter
+							selectedStatus={selectedStatus}
+							toggleStatus={toggleStatus}
+						/>
 					</div>
 
-					{/* Column 2 */}
 					<div className="basis-3/4 border-gray-400 p-4 mx-[2rem]">
 						{noJobsFound ? (
 							<p className="rounded-lg p-6 bg-slate-600 mx-5 text-center text-white text-xl">
