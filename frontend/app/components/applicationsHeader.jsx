@@ -6,7 +6,7 @@ function ApplicationsHeader({ setShowModal })
 	return (
 		<div className="flex flex-wrap sm:flex-col mx-auto items-center my-[2rem]">
 			<div className="mx-auto">
-				<p className="gradient-text text-transparent text-5xl font-bold animate-gradient m-4">
+				<p className="gradient-text text-transparent text-5xl font-bold animate-gradient m-4 p-1">
 					Applications
 				</p>
 			</div>

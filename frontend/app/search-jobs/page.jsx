@@ -119,7 +119,7 @@ export default function Page()
 					theme="colored"
 				/>
 
-				<p className="gradient-text text-center text-transparent text-5xl font-bold animate-gradient mt-[4rem]">
+				<p className="gradient-text text-center text-transparent text-5xl font-bold animate-gradient mt-[4rem] p-2">
 					Explore New Jobs
 				</p>
 				<div className="mt-[3rem]">

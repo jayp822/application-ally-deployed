@@ -17,7 +17,7 @@ export default function Page()
 			<div className="flex flex-col min-h-screen bg-neutral-900">
 				<Navbar />
 				<div className="flex flex-col gap-10 mx-auto items-center">
-					<p className="gradient-text text-transparent text-5xl font-bold animate-gradient mt-[4rem]">
+					<p className="gradient-text text-transparent text-5xl font-bold animate-gradient mt-[4rem] p-2">
 						Sign In
 					</p>
 					<SignInForm />

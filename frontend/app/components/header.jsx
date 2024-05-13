@@ -20,7 +20,7 @@ function Header()
 						className="mx-auto mt-14 w-[10rem] sm:w-[15rem] md:w-[18rem] lg:w-[20rem] rounded-lg "
 					/>
 				</div>
-				<h1 className="gradient-text text-transparent text-5xl font-bold animate-gradient mt-[3rem] mb-[3rem] text-center mx-10">
+				<h1 className="gradient-text text-transparent text-5xl font-bold animate-gradient mt-[3rem] mb-[3rem] text-center mx-10 p-4">
 					Stay On Top of Your Job Hunt
 				</h1>
 			</div>
