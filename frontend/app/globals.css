@@ -5,20 +5,19 @@
 @tailwind utilities;
 
 * {
-	@apply transition-colors duration-500;
+  @apply transition-colors duration-500;
 }
 
-
 .gradient-text {
-	background: linear-gradient(
-		to right,
-		rgb(147 197 253),
-		rgb(59 130 246),
-		rgb(30 64 175),
-		rgb(59 130 246),
-		rgb(147 197 253),
-		rgb(30 64 175)
-	);
-	background-size: 300% 300%;
-	background-clip: text;
+  background: linear-gradient(
+    to right,
+    rgb(147 197 253),
+    rgb(59 130 246),
+    rgb(30 64 175),
+    rgb(59 130 246),
+    rgb(147 197 253),
+    rgb(30 64 175)
+  );
+  background-size: 300% 300%;
+  background-clip: text;
 }

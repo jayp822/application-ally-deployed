@@ -5,4 +5,5 @@ const UserSchema = new Schema({
   password: { type: String, required: true },
 });
 
+// eslint-disable-next-line no-undef
 export default User = model('User', UserSchema);

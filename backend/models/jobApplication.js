@@ -32,4 +32,5 @@ const jobApplicationSchema = new Schema({
   },
 });
 
+// eslint-disable-next-line no-undef
 export default JobApplication = model('jobapplication', jobApplicationSchema);

@@ -1,16 +1,15 @@
-"use client";
-import "@/app/globals.css";
-import Navbar from "./components/navbar";
+'use client'
+import '@/app/globals.css'
+import Navbar from './components/navbar'
+import React from 'react'
 
+import Header from './components/header'
 
-import Header from "./components/header";
-
-export default function Home()
-{
-	return (
-		<div className="bg-neutral-900">
-			<Navbar />
-			<Header />
-		</div>
-	);
+export default function Home() {
+  return (
+    <div className="bg-neutral-900">
+      <Navbar />
+      <Header />
+    </div>
+  )
 }
